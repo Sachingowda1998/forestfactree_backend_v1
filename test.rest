@@ -1,0 +1,567 @@
+###
+POST http://localhost:5000/forestfactree/categories/add
+Content-Type: application/json
+
+{
+  "name": "Flowers",
+  "cdescp": "A diverse range of beautiful and fragrant flowers.",
+  "cimage": "/flower1.jpg",
+  "subcategories": [
+    {
+      "sname": "Rose",
+      "simage": "/flower2.jpg"
+    },
+    {
+      "sname": "Tulip",
+      "simage": "/flower3.jpg"
+    }
+  ]
+}
+
+
+###
+GET http://localhost:5000/forestfactree/categories
+Accept: application/json
+
+
+###
+### Delete Category
+DELETE http://localhost:5000/forestfactree/categories/delete
+Content-Type: application/json
+
+{
+  "categoryId": "673edd77fe4a359810f6e31e"
+}
+
+
+### Edit Category
+PUT http://localhost:5000/forestfactree/categories/edit
+Content-Type: application/json
+
+{
+  "categoryId": "67402c65a0bf2f4217cf4c9b",
+  "updatedCategoryData": {
+    "name": "Wood",
+    "cdescp": "Updated category description 3",
+    "cimage": "/wood1.jpg"
+  }
+}
+
+
+### Add Subcategory
+POST http://localhost:5000/forestfactree/categories/add-sub
+Content-Type: application/json
+
+{
+  "categoryId": "67402c65a0bf2f4217cf4c9b",
+  "subcategory": {
+    "sname": "New Subcategory Name 1",
+    "simage": "New subcategory image here"
+  }
+}
+
+
+### Edit Subcategory
+PUT http://localhost:5000/forestfactree/categories/edit-sub
+Content-Type: application/json
+
+{
+  "categoryId": "67402c65a0bf2f4217cf4c9b",
+  "subcategoryId": "67402c65a0bf2f4217cf4c9c",
+  "updatedSubcategory": {
+    "sname": "Updated Subcategory Name 1",
+    "simage": "Updated Subcategory Image 1"
+  }
+}
+
+
+### Delete Subcategory
+DELETE http://localhost:5000/forestfactree/categories/del-sub
+Content-Type: application/json
+
+{
+  "categoryId": "67402c65a0bf2f4217cf4c9b",
+  "subcategoryId": "67402c65a0bf2f4217cf4c9c"
+}
+
+
+### add product enquiry
+POST http://localhost:5000/forestfactree/enquiries/add
+Content-Type: application/json
+
+{
+  "name": "Wooden Chair",
+  "category": "Wood",
+  "subcategory": "Teak Wood",
+  "buyerName": "John Doe",
+  "buyerEmail": "john.doe@example.com",
+  "buyerPhoneNumber": "1234567890",
+  "buyerAddress": "123 Forest Lane",
+  "enquiryDetails": "Looking for 50 chairs.",
+  "enquiryStatus": "Pending"
+}
+
+
+### get enquiry
+GET http://localhost:5000/forestfactree/enquiries/all
+Accept: application/json
+
+
+###
+GET http://localhost:5000/forestfactree/seller-enquiries/all
+
+
+###
+POST http://localhost:5000/forestfactree/seller-enquiries/add
+Content-Type: application/json
+
+{
+  "sellerName": "John Doe",
+  "sellerPhoneNumber": "9876543210",
+  "enquiryDetails": "Interested in selling teak wood.",
+  "gstNumber": "29ABCDE1234F2Z5"
+}
+
+
+###
+POST http://localhost:5000/forestfactree/contact-us/add
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "mobileNumber": "9876543210",
+  "enquiryMessage": "I want more details about your products."
+}
+
+
+###
+POST http://localhost:5000/forestfactree/contact-us/add
+Content-Type: application/json
+
+{
+  "email": "invalidemail.com",
+  "mobileNumber": "1234567890"
+}
+
+
+###
+GET http://localhost:5000/forestfactree/contact-us/all
+
+
+### Add a new unit
+POST http://localhost:5000/forestfactree/units
+Content-Type: application/json
+
+{
+  "unit": "Kilogram"
+}
+
+
+### Add another unit with default active status
+POST http://localhost:5000/forestfactree/units
+Content-Type: application/json
+
+{
+  "unit": "Gram"
+}
+
+
+### Fetch all units
+GET http://localhost:5000/forestfactree/units
+
+
+### Delete a unit
+DELETE http://localhost:5000/forestfactree/units/674171f69e1f7f7350efb427
+
+
+### Fetch all units again after deleting one
+GET http://localhost:5000/forestfactree/units
+
+
+### Add a new buyer
+POST http://localhost:5000/forestfactree/buyers
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "mobileNumber": "1234567890",
+  "alternateMobileNumber": "0987654321",
+  "buyerType": "Retail",
+  "address": "1234 Elm Street",
+  "city": "SomeCity",
+  "state": "SomeState",
+  "pincode": "123456",
+  "GST": "123456789012345"
+}
+
+
+### Edit an existing buyer (replace the `id` with a valid buyer ID)
+PUT http://localhost:5000/forestfactree/buyers/67417e6864f78234973d736b
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "mobileNumber": "9876543210",
+  "alternateMobileNumber": "1234567890",
+  "buyerType": "Wholesale",
+  "address": "5678 Oak Street",
+  "city": "OtherCity",
+  "state": "OtherState",
+  "pincode": "654321",
+  "GST": "987654321098765"
+}
+
+
+### Delete a buyer (replace the `id` with a valid buyer ID)
+DELETE http://localhost:5000/forestfactree/buyers/67417e6864f78234973d736b
+
+
+### Get all buyers
+GET http://localhost:5000/forestfactree/buyers
+
+
+###
+POST http://localhost:5000/forestfactree/products
+Content-Type: application/json
+
+{
+  "productName": "Sample Product 1",
+  "shortDescription": "Durable wood",
+  "longDescription": "A premium-quality wooden table made from teak wood.",
+  "images": [
+    "/images/product1.jpg",
+    "/images/product2.jpg",
+    "/images/product3.jpg",
+    "/images/product4.jpg"
+  ],
+  "weight": 30,
+  "units": "kg",
+  "treeMeasure": "Height: 5ft, Diameter: 3ft"
+}
+
+
+###
+PUT http://localhost:5000/forestfactree/products/67441bad31c908bd2ee7fbac
+Content-Type: application/json
+
+{
+  "productName": "Sample Product 1",
+  "shortDescription": "Comfortable",
+  "longDescription": "An elegant wooden chair with a cushioned seat for extra comfort.",
+  "weight": 100,
+  "units": "kg"
+}
+
+
+###
+GET http://localhost:5000/forestfactree/products
+
+
+###
+DELETE http://localhost:5000/forestfactree/products/6741b9d2fa6c09087bd1c533
+
+
+### Add Purchase History
+POST http://localhost:5000/forestfactree/purchase-history
+Content-Type: application/json
+
+{
+  "sellerName": "John Doe",
+  "productName": "Teak Wood",
+  "category": "Wood",
+  "weight": "100kg",
+  "unit": "kg",
+  "buyingPrice": 2000
+}
+
+
+### Edit Purchase History (using the purchase ID)
+PUT http://localhost:5000/forestfactree/purchase-history/6741c4765bdbf817c4c2d83a
+Content-Type: application/json
+
+{
+  "sellerName": "Jane Doe",
+  "productName": "Mahogany Wood",
+  "category": "Wood",
+  "weight": "50kg",
+  "unit": "kg",
+  "buyingPrice": 1500
+}
+
+
+### View All Purchase History
+GET http://localhost:5000/forestfactree/purchase-history
+
+
+###
+POST http://localhost:5000/forestfactree/sales-history
+Content-Type: application/json
+
+{
+  "productId": "67441bad31c908bd2ee7fbac",
+  "productName": "Sample Product 1",
+  "weight": 1,
+  "sellingPrice": 5000,
+  "buyerName": "John Doe",
+  "buyerEmail": "johndoe@example.com",
+  "buyerMobileNumber": "9876543210",
+  "city": "New York",
+  "modeOfPayment": "Credit Card"
+}
+
+
+###
+GET http://localhost:5000/forestfactree/sales-history
+
+
+### to add a buyer enquiry
+POST http://localhost:5000/forestfactree/buyer-enquiries/add
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "buyerName": "John Buyer",
+  "buyerEmail": "johnbuyer@example.com",
+  "buyerPhoneNumber": 1234567810,
+  "buyerAddress": "123 Main St",
+  "enquiryDetails": "Looking for products."
+}
+
+
+### to view buyer enquiry
+GET http://localhost:5000/forestfactree/buyer-enquiries/all
+
+
+### to delete a buyer enquiry
+DELETE http://localhost:5000/forestfactree/buyer-enquiries/delete/67444342ff446251b5a76534
+
+
+
+
+### to add a seller enquiry
+POST http://localhost:5000/forestfactree/seller-enquiries/add
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "mobile": "1234567890",
+  "alternateMobile": "0987654321",
+  "farmAddress": "123 Farm Lane",
+  "productName": "Organic Apples",
+  "weight": 100,
+  "sellingPrice": 50,
+  "enquiryDetails": "Looking to sell my organic apples."
+}
+
+
+### to view all seller enquiries
+GET http://localhost:5000/forestfactree/seller-enquiries/all
+
+
+### to delete a seller enquiry
+DELETE http://localhost:5000/forestfactree/seller-enquiries/delete/674448fe266b45ff4bbf2dc9
+
+
+### add detail in contact us
+POST http://localhost:5000/forestfactree/contact-us/add
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "janedoe@example.com",
+  "mobileNumber": "1234567890",
+  "userType": "Customer",
+  "enquiryDescription": "Need more information about your products."
+}
+
+
+### view all contact us enquiries
+GET http://localhost:5000/forestfactree/contact-us/all
+
+
+### to delete a contact us enquiry
+DELETE http://localhost:5000/forestfactree/contact-us/delete/67445064f447c6c3356e5705
+
+
+### adding a unit
+POST http://localhost:5000/forestfactree/units
+Content-Type: application/json
+
+{
+  "unit": "ton"
+}
+
+
+### get all units
+GET http://localhost:5000/forestfactree/units
+
+
+### delete a unit
+DELETE http://localhost:5000/forestfactree/units/674172159e1f7f7350efb429
+
+
+### add buyer in buyer list
+POST http://localhost:5000/forestfactree/buyers/add
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "mobileNumber": "9876543210",
+  "alternateMobileNumber": "9123456780",
+  "buyerType": "Retail",
+  "millAddress": "123 Mill St, Industrial Area",
+  "gstNumber": "123456789012345",
+  "panNumber": "ABCDE1234F"
+}
+
+
+### edit an existing buyer
+PUT http://localhost:5000/forestfactree/buyers/edit/674567941ad62c8da1ce7bf9
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "mobileNumber": "9876543211",
+  "alternateMobileNumber": "9123456781",
+  "buyerType": "Wholesale",
+  "millAddress": "456 Mill St, Industrial Area",
+  "gstNumber": "123456789012346",
+  "panNumber": "ABCDE1234G"
+}
+
+
+### delete a buyer
+DELETE http://localhost:5000/forestfactree/buyers/delete/674567941ad62c8da1ce7bf9
+
+
+
+### view all buyers
+GET http://localhost:5000/forestfactree/buyers/all
+
+
+### Add a new seller
+POST http://localhost:5000/forestfactree/sellers/add
+Content-Type: application/json
+
+{
+  "name": "Alice Smith",
+  "email": "alice.smith1@example.com",
+  "mobileNumber": "9876543210",
+  "alternateMobileNumber": "9123456780",
+  "farmAddress": "789 Farm Rd, Countryside",
+  "gstNumber": "123456789012345",
+  "panNumber": "ABCDE1234F",
+  "additionalDetails": "Specializes in organic produce",
+  "active": "yes"
+}
+
+
+### edit a seller
+PUT http://localhost:5000/forestfactree/sellers/edit/67456f80de6b68b0eb4abe42
+Content-Type: application/json
+
+{
+  "name": "Bob Jones",
+  "email": "alice.smith2@example.com",
+  "mobileNumber": "9876543210",
+  "alternateMobileNumber": "9123456781",
+  "farmAddress": "101 Farm Rd, Countryside",
+  "gstNumber": "123456789012346",
+  "panNumber": "ABCDE1234G",
+  "additionalDetails": "Focuses on dairy farming",
+  "active": "no"
+}
+
+
+### view all sellers
+GET http://localhost:5000/forestfactree/sellers/all
+
+
+### delete a seller
+DELETE http://localhost:5000/forestfactree/sellers/delete/<sellerId>
+
+
+### add a new purchase
+POST http://localhost:5000/forestfactree/purchase-history/add
+Content-Type: application/json
+
+{
+  "sellerName": "John Doe",
+  "productName": "Apples",
+  "category": "Fruits",
+  "subcategory": "Organic",
+  "quantity": "100 kg",
+  "price": 500
+}
+
+
+### edit a purchase
+PUT http://localhost:5000/forestfactree/purchase-history/edit/6745748bbd3fd475c782fcc4
+Content-Type: application/json
+
+{
+  "sellerName": "Jane Smith",
+  "productName": "Oranges",
+  "category": "Fruits",
+  "subcategory": "Citrus",
+  "quantity": "150 kg",
+  "price": 750
+}
+
+
+### view all purchases
+GET http://localhost:5000/forestfactree/purchase-history/all
+
+
+### delete a purchase
+DELETE http://localhost:5000/forestfactree/purchase-history/delete/6741cb1a5bdbf817c4c2d841
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
